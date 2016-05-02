@@ -1,0 +1,99 @@
+@import url(http://yui.yahooapis.com/pure/0.6.0/pure-min.css);
+@import url(http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css);
+
+/* general style attributes */
+
+body {
+    background-image: url(../images/background.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: sans-serif;
+    font-size: 1em;
+    color: greenyellow;
+}
+
+fieldset {
+    border-radius: 8px;
+}
+
+#heading {
+    font-size: 1.3em;
+    font-family: sans-serif;
+    color: white;
+    text-align: center;
+    border: 1px solid #666666;
+    border-radius: 25px;
+    background: #ffad5b;
+    padding: 5px 8px 5px 8px;
+}
+
+
+
+/* Style for navigation bars in template.xhtml */
+
+#navigation
+{
+    margin-top: 20px;
+    float: left;
+    width: 100px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 210px;
+    background-color: #e6f7b0;
+    float: left;
+    overflow: auto;
+    border: 1px solid #666666;
+    border-radius: 25px;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 0 8px 16px;
+    text-decoration: none;
+    border: 1px solid #666666;
+}
+
+/*
+Aktives Navigationselement kennzeichen
+-> impl. falls noch genug Zeit
+li a.active {
+    background-color: #4CAF50;
+    color: white;
+} */
+
+li a:hover:not(.active) {
+    background-color: #ffad5b;
+    color: white;
+}
+
+
+
+/* Container for header and content in template.xhtml */
+
+#container {
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 0 20px 10px 20px;
+    border: 1px solid #666666;
+    border-radius: 25px;
+    width: 865px;
+    padding-top: 10px;
+    font-size: 1em;
+}
+
+#header {
+    font-size: 1.5em;
+    font-family: sans-serif;
+    text-align: center;
+    border: 1px solid #666666;
+    border-radius: 25px;
+    background: #B5E61D;
+    padding: 0 10px 5px 10px;
+    margin-bottom: 50px;
+}

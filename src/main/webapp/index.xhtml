@@ -3,12 +3,22 @@
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xml:lang="en" lang="en">
-<h:head>
-    <title>Videoflix</title>
-</h:head>
-<h:body>
-    <h1>Willkommen bei Videoflix!</h1>
-</h:body>
+<body>
+<ui:composition template="template.xhtml">
+    <ui:define name="content">
+        <h1 id="heading">#{msg['welcome.heading']}</h1>
+        <h:form>
+            <p>Auf dieser Seite kannst Du Deine allerliebsten Filme und Serien organisieren und verwalten!<br />
+                Falls Du noch nicht registriert bist, melde dich <a href="login.xhtml">hier</a> an!<br />
+                Möchtest Du eine/n neue/n Film/Serie anlegen?
+                Oder eine Übersicht Deiner Lieblingsfilme und -serien sehen?
+            </p>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</body>
 </html>
