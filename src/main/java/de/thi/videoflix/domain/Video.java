@@ -17,6 +17,12 @@ public class Video implements Serializable {
     //private int episode;
     //private byte[] cover;
 
+    public Video(){}
+
+    public Video(String name){
+        this.setName(name);
+    }
+
     public String getName() {
         return name;
     }
