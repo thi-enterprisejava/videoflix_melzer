@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xml:lang="en" lang="en">
+<body>
+<ui:composition template="template.xhtml">
+    <ui:define name="content">
+        <h1 id="heading">#{msg['login.heading']}</h1>
+        <h:form>
+            <fieldset>
+                <legend>Register</legend>
+                <label for="username">#{msg['login.username']}</label>
+                <input type="text" name="username" />
+
+                <label for="password1">#{msg['register.pwd1']}</label>
+                <input type="password" name="password1"/>
+
+                <label for="password2">#{msg['register.pwd2']}</label>
+                <input type="password" name="password2"/>
+
+                <input type="submit" value="#{msg['register.button']}"/>
+            </fieldset>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

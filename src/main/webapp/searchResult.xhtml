@@ -10,7 +10,7 @@
 <body>
 <ui:composition template="template.xhtml">
     <ui:define name="content">
-        <h1 id="heading">#{msg['searchresult.heading']}</h1>
+        <h1 id="heading">#{msg['searchresult.heading']} "#{search.searchPhrase}"</h1>
         <ui:repeat value="#{search.result}" var="video">
             <div>#{video.name}</div>
         </ui:repeat>

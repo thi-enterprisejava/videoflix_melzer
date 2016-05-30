@@ -10,13 +10,19 @@
 <body>
 <ui:composition template="template.xhtml">
     <ui:define name="content">
-        <h1 id="heading">#{msg['welcome.heading']}</h1>
+        <h1 id="heading">#{msg['login.heading']}</h1>
         <h:form>
-            <p>Auf dieser Seite kannst Du Deine allerliebsten Filme und Serien organisieren und verwalten!<br />
-                Falls Du noch nicht registriert bist, melde dich <a href="register.xhtml">hier</a> an!<br />
-                Möchtest Du eine/n neue/n Film/Serie anlegen?
-                Oder eine Übersicht Deiner Lieblingsfilme und -serien sehen?
-            </p>
+            <fieldset>
+                <legend>Login</legend>
+                <label for="username">#{msg['login.username']}</label>
+                <input type="text" name="username" />
+
+                <label for="password">#{msg['login.pwd']}</label>
+                <input type="password" name="password"/>
+
+                <input type="submit" value="Login"/>
+            </fieldset>
+            <h:commandLink action="index" value="Zurück"/>
         </h:form>
     </ui:define>
 </ui:composition>
