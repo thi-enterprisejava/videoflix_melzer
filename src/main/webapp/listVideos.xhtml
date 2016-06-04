@@ -2,11 +2,67 @@
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <title></title>
-</head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xml:lang="en" lang="en">
 <body>
-
+<ui:composition template="template.xhtml">
+    <ui:define name="content">
+        <h1 id="heading">#{msg['listvids.heading']}</h1>
+        <!-- Liste aller Videos eines Users anzeigen -->
+        <h:form>
+            <p:dataTable value="#{videoListProducer.videos}"
+                         var="video">
+                <p:column>
+                    <p:commandButton onclick="confirmation.show()" actionListener="#{manageVideo.doDeleteVideo(video)}"
+                                     value="X" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">#{msg['listvids.name']}</f:facet>
+                    <h:outputText value="#{video.name}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">#{msg['listvids.studio']}</f:facet>
+                    <h:outputText value="#{video.studio}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">#{msg['listvids.dir']}</f:facet>
+                    <h:outputText value="#{video.director}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">#{msg['listvids.year']}</f:facet>
+                    <h:outputText value="#{video.year}" />
+                </p:column>
+                <p:column>
+                    <p:commandButton value="#{msg['listvids.edit']}"
+                                     ajax="false"
+                                     action="#{manageVideo.doEditVideo(video)}" />
+                </p:column>
+                <p:column>
+                    <p:commandButton value="#{msg['listvids.details']}"
+                                     ajax="false"
+                                     action="#{manageVideo.doShowDetails(video)}" />
+                </p:column>
+            </p:dataTable>
+            <p:commandButton value="#{msg['listvids.new']}"
+                             ajax="false"
+                             action="#{manageVideo.doAddVideo}" />
+            <p:confirmDialog
+                    message="Wirklich loeschen?"
+                    header="Spiel loeschen"
+                    severity="alert"
+                    widgetVar="confirmation">
+                <p:commandButton value="Ja"
+                                 oncomplete="confirmation.hide()" ajax="false"
+                                 actionListener="#{manageVideo.commitDeleteGame}" />
+                <p:commandButton value="Nein"
+                                 onclick="confirmation.hide()" />
+            </p:confirmDialog>
+        </h:form>
+    </ui:define>
+</ui:composition>
 </body>
 </html>
