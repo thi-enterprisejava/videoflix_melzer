@@ -3,22 +3,26 @@ package de.thi.videoflix.web.model;
 import de.thi.videoflix.domain.Video;
 import de.thi.videoflix.domain.Genre;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.enterprise.inject.Produces;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 
 @SessionScoped
-@Named
 public class VideoListProducer implements Serializable{
 
     private List<Video> videos;
 
-    public VideoListProducer() {
+    @PostConstruct
+    public void init() {
         videos = createMockVideos();
     }
 
+    @Produces
+    @Named
     public List<Video> getVideos(){
         return videos;
     }

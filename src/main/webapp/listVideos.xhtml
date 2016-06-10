@@ -14,8 +14,7 @@
         <h1 id="heading">#{msg['listvids.heading']}</h1>
         <!-- Liste aller Videos eines Users anzeigen -->
         <h:form>
-            <p:dataTable value="#{videoListProducer.videos}"
-                         var="video">
+            <p:dataTable value="#{videos}" var="video">
                 <p:column>
                     <p:commandButton onclick="confirmation.show()" actionListener="#{manageVideo.doDeleteVideo(video)}"
                                      value="X" />

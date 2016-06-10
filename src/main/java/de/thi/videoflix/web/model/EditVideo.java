@@ -1,11 +1,11 @@
 package de.thi.videoflix.web.model;
 
-import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 
-@SessionScoped
+@ViewScoped
 @Named
 public class EditVideo implements Serializable {
 
