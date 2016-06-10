@@ -1,7 +1,9 @@
 package de.thi.videoflix.web.model;
 
 import de.thi.videoflix.domain.Video;
+import de.thi.videoflix.util.Events;
 
+import javax.enterprise.event.Event;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -13,6 +15,9 @@ public class ManageVideo implements Serializable {
 
     @Inject
     private VideoProducer videoProducer;
+
+    @Inject @Events.Deleted
+    private Event<Video> videoDeleteEvent;
 
     private Video videoToDelete;
 
@@ -46,6 +51,7 @@ public class ManageVideo implements Serializable {
     }
 
     public void commitDeleteGame() {
-        System.out.println("Not implemented yet");
+
+        videoDeleteEvent.fire(videoToDelete);
     }
 }

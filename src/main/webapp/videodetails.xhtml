@@ -8,16 +8,16 @@
 <body>
 <ui:composition template="template.xhtml">
     <ui:define name="content">
-        <h1 id="heading">#{videoProducer.selectedVideo.name}</h1>
-        <p>#{msg['details.descr']}: #{videoProducer.selectedVideo.description}</p>
-        <p>#{msg['details.year']}: #{videoProducer.selectedVideo.year}</p>
-        <p>#{msg['details.studio']}: #{videoProducer.selectedVideo.studio}</p>
-        <p>#{msg['details.director']}: #{videoProducer.selectedVideo.director}</p>
+        <h1 id="heading">#{selectedVideo.name}</h1>
+        <p>#{msg['details.descr']}: #{selectedVideo.description}</p>
+        <p>#{msg['details.year']}: #{selectedVideo.year}</p>
+        <p>#{msg['details.studio']}: #{selectedVideo.studio}</p>
+        <p>#{msg['details.director']}: #{selectedVideo.director}</p>
         <p>#{msg['details.genres']}:</p>
-        <ui:repeat value="#{videoProducer.selectedVideo.genres}" var="genre">
+        <ui:repeat value="#{selectedVideo.genres}" var="genre">
             <p> #{genre.name} </p>
         </ui:repeat>
-        <p>#{msg['details.series']}: #{videoProducer.selectedVideo.is_series ? msg['details.yes'] : msg['details.no']}</p>
+        <p>#{msg['details.series']}: #{selectedVideo.is_series ? msg['details.yes'] : msg['details.no']}</p>
         <a href="listVideos.xhtml">Zurück</a>
     </ui:define>
 </ui:composition>

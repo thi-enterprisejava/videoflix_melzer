@@ -3,11 +3,11 @@ package de.thi.videoflix.web.model;
 import de.thi.videoflix.domain.Video;
 
 import javax.enterprise.context.SessionScoped;
+import javax.enterprise.inject.Produces;
 import javax.inject.Named;
 import java.io.Serializable;
 
 @SessionScoped
-@Named
 public class VideoProducer implements Serializable {
 
     private enum Mode {
@@ -17,6 +17,8 @@ public class VideoProducer implements Serializable {
     private Video video;
     private Mode mode;
 
+    @Produces
+    @Named
     public Video getSelectedVideo() {
         return video;
     }
@@ -25,6 +27,8 @@ public class VideoProducer implements Serializable {
         this.video = video;
     }
 
+    @Produces
+    @Named
     public Boolean isAddMode() {
         return mode == Mode.ADD;
     }

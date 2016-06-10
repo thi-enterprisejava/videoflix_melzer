@@ -11,7 +11,7 @@
 <body>
 <ui:composition template="template.xhtml">
     <ui:define name="content">
-        <h1 id="heading">#{videoProducer.isAddMode() ?
+        <h1 id="heading">#{isAddMode ?
                 msg['add.heading'] :
                 msg['edit.heading']}</h1>
         <h:form>
@@ -22,7 +22,7 @@
                     <h:panelGroup>
                         <h:outputLabel for="vname" value="#{msg['add.vname']}: " />
                         <p:inputText id="vname"
-                                     value="#{videoProducer.selectedVideo.name}"
+                                     value="#{selectedVideo.name}"
                                      validatorMessage="Der Name muss zwischen 1 und 50 Zeichen lang sein!">
                             <f:validateRequired/>
                             <f:validateLength minimum="1" maximum="50" />
@@ -34,7 +34,7 @@
                     <h:panelGroup>
                         <h:outputLabel for="studio" value="#{msg['add.studio']}: " />
                         <p:inputText id="studio"
-                                     value="#{videoProducer.selectedVideo.studio}"
+                                     value="#{selectedVideo.studio}"
                                      validatorMessage="Der Name des Studios muss zwischen 1 und 50 Zeichen lang sein!">
                             <f:validateRequired/>
                             <f:validateLength minimum="1" maximum="50" />
@@ -46,7 +46,7 @@
                     <h:panelGroup>
                         <h:outputLabel for="director" value="#{msg['add.director']}: " />
                         <p:inputText id="director"
-                                     value="#{videoProducer.selectedVideo.director}"
+                                     value="#{selectedVideo.director}"
                                      validatorMessage="Der Name des Regisseurs muss zwischen 1 und 50 Zeichen lang sein!">
                             <f:validateRequired/>
                             <f:validateLength minimum="1" maximum="50" />
@@ -58,7 +58,7 @@
                     <h:panelGroup> <!-- Datepicker machen? -->
                         <h:outputLabel for="year" value="#{msg['add.year']}: " />
                         <p:inputText id="year"
-                                     value="#{videoProducer.selectedVideo.year}"
+                                     value="#{selectedVideo.year}"
                                      maxlength="4"
                                      converterMessage="Please enter digits only."
                                      validatorMessage="Bitte gib eine Jahreszahl zwischen 1895 und 2099 ein!" >
@@ -71,14 +71,14 @@
                     <!-- is_series -->
                     <h:panelGroup>
                         <h:outputLabel for="isseries" value="#{msg['add.isseries']}: " />
-                        <p:selectBooleanCheckbox id="isseries" value="#{videoProducer.selectedVideo.is_series}" />
+                        <p:selectBooleanCheckbox id="isseries" value="#{selectedVideo.is_series}" />
                     </h:panelGroup>
 
                     <!-- genre -->
                     <h:panelGroup>
                         <h:outputLabel for="genre" value="#{msg['add.genre']}: " />
                         <h:selectManyListbox
-                                value="#{videoProducer.selectedVideo.genres}"
+                                value="#{selectedVideo.genres}"
                                 id="genre" ></h:selectManyListbox>
                         <f:selectItems value="" />
                     </h:panelGroup>
@@ -86,7 +86,7 @@
                     <!-- description -->
                     <h:panelGroup>
                         <h:outputLabel for="descr" value="#{msg['add.descr']}: " />
-                        <p:inputTextarea id="descr" value="#{videoProducer.selectedVideo.description}"
+                        <p:inputTextarea id="descr" value="#{selectedVideo.description}"
                                          rows="6" cols="30"/>
                     </h:panelGroup>
 
