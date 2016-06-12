@@ -13,8 +13,6 @@ public class Video implements Serializable {
     private List<Genre> genres = new ArrayList();
     private String description;
     private Boolean is_series;
-    //private int season;
-    //private int episode;
     //private byte[] cover;
 
     public Video(){}

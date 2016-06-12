@@ -13,13 +13,19 @@
 <h:body>
     <a href="login.xhtml">login</a>
     <a href="register.xhtml">register</a>
-    <div id="navigation">
-        <ul>
-            <li><a href="index.xhtml">#{msg['navigation.home']}</a></li>
-            <li><a href="search.xhtml">#{msg['navigation.search']}</a></li>
-            <li><a href="addvideo.xhtml" >#{msg['navigation.add']}</a></li>
-        </ul>
-    </div>
+
+    <h:form>
+        <div id="navigation">
+            <ul>
+                <li><a href="index.xhtml">#{msg['navigation.home']}</a></li>
+                <li><a href="listVideos.xhtml">#{msg['navigation.listvids']}</a></li>
+                <li><a href="search.xhtml">#{msg['navigation.search']}</a></li>
+                <li><h:commandLink
+                        action="#{manageVideo.doAddVideo()}">#{msg['navigation.add']}</h:commandLink></li>
+            </ul>
+        </div>
+    </h:form>
+
     <div id="container">
         <div id="header"><img src="images/logo.png" alt="Videoflix" /></div>
         <div id="content">

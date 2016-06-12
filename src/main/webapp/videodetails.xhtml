@@ -2,11 +2,24 @@
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <title></title>
-</head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xml:lang="en" lang="en">
 <body>
-
+<ui:composition template="template.xhtml">
+    <ui:define name="content">
+        <h1 id="heading">#{selectedVideo.name}</h1>
+        <p>#{msg['details.descr']}: #{selectedVideo.description}</p>
+        <p>#{msg['details.year']}: #{selectedVideo.year}</p>
+        <p>#{msg['details.studio']}: #{selectedVideo.studio}</p>
+        <p>#{msg['details.director']}: #{selectedVideo.director}</p>
+        <p>#{msg['details.genres']}:</p>
+        <ui:repeat value="#{selectedVideo.genres}" var="genre">
+            <p> #{genre.name} </p>
+        </ui:repeat>
+        <p>#{msg['details.series']}: #{selectedVideo.is_series ? msg['details.yes'] : msg['details.no']}</p>
+        <a href="listVideos.xhtml">Zurück</a>
+    </ui:define>
+</ui:composition>
 </body>
 </html>

@@ -6,11 +6,14 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
       xml:lang="en" lang="en">
 <body>
 <ui:composition template="template.xhtml">
     <ui:define name="content">
-        <h1 id="heading">#{msg['add.heading']}</h1>
+        <h1 id="heading">#{isAddMode ?
+                msg['add.heading'] :
+                msg['edit.heading']}</h1>
         <h:form>
             <fieldset>
                 <legend>#{msg['add.legend']}</legend>
@@ -18,64 +21,64 @@
                 <h:panelGrid columns="2">
                     <h:panelGroup>
                         <h:outputLabel for="vname" value="#{msg['add.vname']}: " />
-                        <h:inputText id="vname"
-                                     value=""
+                        <p:inputText id="vname"
+                                     value="#{selectedVideo.name}"
                                      validatorMessage="Der Name muss zwischen 1 und 50 Zeichen lang sein!">
                             <f:validateRequired/>
                             <f:validateLength minimum="1" maximum="50" />
-                        </h:inputText>
+                        </p:inputText>
                     </h:panelGroup>
-                    <h:message for="vname" style="color: red" />
+                    <p:message for="vname" style="color: red" />
 
                     <!-- studio -->
                     <h:panelGroup>
                         <h:outputLabel for="studio" value="#{msg['add.studio']}: " />
-                        <h:inputText id="studio"
-                                     value=""
+                        <p:inputText id="studio"
+                                     value="#{selectedVideo.studio}"
                                      validatorMessage="Der Name des Studios muss zwischen 1 und 50 Zeichen lang sein!">
                             <f:validateRequired/>
                             <f:validateLength minimum="1" maximum="50" />
-                        </h:inputText>
+                        </p:inputText>
                     </h:panelGroup>
-                    <h:message for="studio" style="color: red" />
+                    <p:message for="studio" style="color: red" />
 
                     <!-- director -->
                     <h:panelGroup>
                         <h:outputLabel for="director" value="#{msg['add.director']}: " />
-                        <h:inputText id="director"
-                                     value=""
+                        <p:inputText id="director"
+                                     value="#{selectedVideo.director}"
                                      validatorMessage="Der Name des Regisseurs muss zwischen 1 und 50 Zeichen lang sein!">
                             <f:validateRequired/>
                             <f:validateLength minimum="1" maximum="50" />
-                        </h:inputText>
+                        </p:inputText>
                     </h:panelGroup>
-                    <h:message for="director" style="color: red" />
+                    <p:message for="director" style="color: red" />
 
                     <!-- year -->
                     <h:panelGroup> <!-- Datepicker machen? -->
                         <h:outputLabel for="year" value="#{msg['add.year']}: " />
-                        <h:inputText id="year"
-                                     value=""
+                        <p:inputText id="year"
+                                     value="#{selectedVideo.year}"
                                      maxlength="4"
                                      converterMessage="Please enter digits only."
                                      validatorMessage="Bitte gib eine Jahreszahl zwischen 1895 und 2099 ein!" >
                             <f:validateRequired/>
                             <f:validateLength maximum="4" minimum="4" />
-                        </h:inputText>
+                        </p:inputText>
                     </h:panelGroup>
-                    <h:message for="year" style="color: red" />
+                    <p:message for="year" style="color: red" />
 
                     <!-- is_series -->
                     <h:panelGroup>
                         <h:outputLabel for="isseries" value="#{msg['add.isseries']}: " />
-                        <h:selectBooleanCheckbox id="isseries" value="true" />
+                        <p:selectBooleanCheckbox id="isseries" value="#{selectedVideo.is_series}" />
                     </h:panelGroup>
 
                     <!-- genre -->
                     <h:panelGroup>
                         <h:outputLabel for="genre" value="#{msg['add.genre']}: " />
                         <h:selectManyListbox
-                                value=""
+                                value="#{selectedVideo.genres}"
                                 id="genre" ></h:selectManyListbox>
                         <f:selectItems value="" />
                     </h:panelGroup>
@@ -83,15 +86,15 @@
                     <!-- description -->
                     <h:panelGroup>
                         <h:outputLabel for="descr" value="#{msg['add.descr']}: " />
-                        <h:inputTextarea id="descr" value=""
+                        <p:inputTextarea id="descr" value="#{selectedVideo.description}"
                                          rows="6" cols="30"/>
                     </h:panelGroup>
 
                 </h:panelGrid>
             </fieldset>
             <div>
-                <h:commandButton value="#{msg['add.save']}"/>
-                <h:commandButton value="#{msg['add.cancel']}"/>
+                <p:commandButton value="#{msg['add.save']}" action="#{editVideo.doSave}"/>
+                <p:commandButton value="#{msg['add.cancel']}" action="#{editVideo.doCancel}" />
             </div>
         </h:form>
     </ui:define>
