@@ -11,7 +11,7 @@ import java.util.List;
 
 @RequestScoped
 @Alternative
-public class MockVideoServiceBean implements VideoService{
+public class MockVideoServiceBean {
     public List<Video> getAllVideos() {
 
         Video vid1 = new Video();

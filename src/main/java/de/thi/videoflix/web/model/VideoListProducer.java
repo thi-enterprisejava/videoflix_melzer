@@ -1,22 +1,19 @@
 package de.thi.videoflix.web.model;
 
 import de.thi.videoflix.domain.Video;
-import de.thi.videoflix.domain.Genre;
 import de.thi.videoflix.services.VideoService;
 import de.thi.videoflix.util.Events;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.event.Observes;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.Serializable;
 import java.util.List;
-import java.util.ArrayList;
 
-@SessionScoped
-public class VideoListProducer implements Serializable{
+@RequestScoped
+public class VideoListProducer {
 
     private List<Video> videos;
 
@@ -35,10 +32,17 @@ public class VideoListProducer implements Serializable{
     }
 
     public void onVideoAdded(@Observes @Events.Added Video video){
-        getVideos().add(video);
+        videoService.addVideo(video);
+        init();
     }
 
     public void onVideoDeleted(@Observes @Events.Deleted Video video) {
-        getVideos().remove(video);
+        videoService.deleteVideo(video);
+        init();
+    }
+
+    public void  onVideoUpdated(@Observes @Events.Updated Video video){
+        videoService.updateVideo(video);
+        init();
     }
 }

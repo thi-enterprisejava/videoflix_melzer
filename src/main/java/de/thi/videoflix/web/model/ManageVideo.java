@@ -33,12 +33,6 @@ public class ManageVideo implements Serializable {
         return "addvideo";
     }
 
-    /*public String doListVideos(Video video){
-        System.out.println("List all videos");
-        videoProducer.setSelectedVideo(video);
-        return "listVideos";
-    }*/
-
     public void doDeleteVideo(Video video) {
         this.videoToDelete = video;
         System.out.println("Video is marked to be deleted");
@@ -51,7 +45,6 @@ public class ManageVideo implements Serializable {
     }
 
     public void commitDeleteGame() {
-
         videoDeleteEvent.fire(videoToDelete);
     }
 }

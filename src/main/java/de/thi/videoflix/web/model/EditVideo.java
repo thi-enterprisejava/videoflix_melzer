@@ -13,14 +13,18 @@ import java.io.Serializable;
 @Named
 public class EditVideo implements Serializable {
 
-    @Inject
-    private VideoProducer videoProducer;
     @Inject @Events.Added
     private Event<Video> videoAddEvent;
+    @Inject @Events.Updated
+    private Event<Video> videoUpdateEvent;
+    @Inject
+    private VideoProducer videoProducer;
 
     public String doSave(){
         if(videoProducer.isAddMode()){
             videoAddEvent.fire(videoProducer.getSelectedVideo());
+        }else{
+            videoUpdateEvent.fire(videoProducer.getSelectedVideo());
         }
         return "listVideos";
     }
