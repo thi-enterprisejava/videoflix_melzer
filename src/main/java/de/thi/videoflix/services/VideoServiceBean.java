@@ -6,7 +6,6 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import java.util.LinkedList;
 import java.util.List;
 
 @Stateless

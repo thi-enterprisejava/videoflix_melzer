@@ -75,13 +75,13 @@
                     </h:panelGroup>
 
                     <!-- genre -->
-                    <!--<h:panelGroup>
+                    <h:panelGroup>
                         <h:outputLabel for="genre" value="#{msg['add.genre']}: " />
-                        <h:selectManyListbox
-                                value="#{selectedVideo.genres}"
-                                id="genre" ></h:selectManyListbox>
-                        <f:selectItems value="" />
-                    </h:panelGroup>-->
+                       <h:selectManyListbox id="genre">
+                           <f:selectItems value="#{manageVideo.listGenres}" var="genre"
+                                          itemLabel="#{genre.name}" itemValue="#{genre.id}"/>
+                       </h:selectManyListbox>
+                    </h:panelGroup>
 
                     <!-- description -->
                     <h:panelGroup>

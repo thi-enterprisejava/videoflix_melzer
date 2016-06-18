@@ -30,6 +30,7 @@ public class EditVideo implements Serializable {
     }
 
     public String doCancel() {
+        System.out.println("doCancel");
         return "listVideos";
     }
 }
