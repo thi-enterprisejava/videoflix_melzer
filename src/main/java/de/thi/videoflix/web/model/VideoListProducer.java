@@ -14,7 +14,6 @@ import java.util.List;
 
 @RequestScoped
 public class VideoListProducer {
-
     private List<Video> videos;
 
     @Inject
@@ -29,20 +28,5 @@ public class VideoListProducer {
     @Named
     public List<Video> getVideos(){
         return videos;
-    }
-
-    public void onVideoAdded(@Observes @Events.Added Video video){
-        videoService.addVideo(video);
-        init();
-    }
-
-    public void onVideoDeleted(@Observes @Events.Deleted Video video) {
-        videoService.deleteVideo(video);
-        init();
-    }
-
-    public void  onVideoUpdated(@Observes @Events.Updated Video video){
-        videoService.updateVideo(video);
-        init();
     }
 }

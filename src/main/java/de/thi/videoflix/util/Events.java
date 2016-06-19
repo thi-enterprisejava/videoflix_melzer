@@ -1,6 +1,5 @@
 package de.thi.videoflix.util;
 
-
 import javax.inject.Qualifier;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
@@ -13,16 +12,5 @@ public class Events {
     @Qualifier
     @Target({ FIELD, PARAMETER})
     @Retention(RUNTIME)
-    public @interface  Added{}
-
-    @Qualifier
-    @Target({ FIELD, PARAMETER})
-    @Retention(RUNTIME)
-    public @interface  Deleted{}
-
-    @Qualifier
-    @Target({ FIELD, PARAMETER})
-    @Retention(RUNTIME)
-    public @interface  Updated{}
-
+    public @interface  Changed{}
 }

@@ -8,7 +8,7 @@ public class Genre implements Serializable {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    private long id;
+    private Long id;
 
     private String name;
 
@@ -17,7 +17,7 @@ public class Genre implements Serializable {
         this.setName(name);
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

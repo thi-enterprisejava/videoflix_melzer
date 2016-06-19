@@ -42,4 +42,8 @@ public class VideoServiceBean implements VideoService {
         query.setParameter("name", name + "%");
         return query.getResultList();
     }
+
+    public Video findById(Long id) {
+        return entityManager.find(Video.class, id);
+    }
 }

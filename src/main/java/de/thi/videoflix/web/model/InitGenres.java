@@ -22,6 +22,7 @@ public class InitGenres {
 
     public void createGenres(){
 
+        System.out.println("Init Genres");
         if (!genreService.getAllGenres().isEmpty()) {
             return;
         }

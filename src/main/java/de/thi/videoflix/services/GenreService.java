@@ -11,5 +11,5 @@ public interface GenreService {
 
     void addGenre(Genre genre);
 
-    List<Genre> getGenreListForVideo(Long videoId);
+   // List<Genre> getGenreListForVideo(Long videoId);
 }

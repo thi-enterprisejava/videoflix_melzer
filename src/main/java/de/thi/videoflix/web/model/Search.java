@@ -14,9 +14,6 @@ import java.util.List;
 public class Search implements Serializable {
 
     @Inject
-    VideoListProducer videoListProducer;
-
-    @Inject
     VideoService videoService;
 
     private String searchPhrase;
