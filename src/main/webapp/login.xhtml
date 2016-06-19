@@ -14,13 +14,19 @@
         <h:form>
             <fieldset>
                 <legend>Login</legend>
-                <label for="username">#{msg['login.username']}</label>
-                <input type="text" name="username" />
-
-                <label for="password">#{msg['login.pwd']}</label>
-                <input type="password" name="password"/>
-
-                <input type="submit" value="Login"/>
+                <h:panelGrid columns="2">
+                    <h:panelGroup>
+                        <label for="username">#{msg['login.username']}: </label>
+                        <input type="text" name="username" />
+                    </h:panelGroup>
+                    <h:panelGroup>
+                        <label for="password">#{msg['login.pwd']}: </label>
+                        <input type="password" name="password"/>
+                    </h:panelGroup>
+                    <h:panelGroup>
+                        <input type="submit" value="Login"/>
+                    </h:panelGroup>
+                </h:panelGrid>
             </fieldset>
             <h:commandLink action="index" value="Zurück"/>
         </h:form>

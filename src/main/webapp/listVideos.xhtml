@@ -16,10 +16,6 @@
         <h:form>
             <p:dataTable value="#{videos}" var="video">
                 <p:column>
-                    <p:commandButton onclick="confirmation.show()" actionListener="#{manageVideo.doDeleteVideo(video)}"
-                                     value="X" />
-                </p:column>
-                <p:column>
                     <f:facet name="header">#{msg['listvids.name']}</f:facet>
                     <h:outputText value="#{video.name}" />
                 </p:column>
@@ -38,28 +34,17 @@
                 <p:column>
                     <p:commandButton value="#{msg['listvids.edit']}"
                                      ajax="false"
-                                     action="#{manageVideo.doEditVideo(video)}" />
+                                     action="#{editVideo.doSwitchToEditPage(video)}" />
                 </p:column>
                 <p:column>
                     <p:commandButton value="#{msg['listvids.details']}"
                                      ajax="false"
-                                     action="#{manageVideo.doShowDetails(video)}" />
+                                     action="#{selectedVideo.doShowDetails(video)}" />
                 </p:column>
             </p:dataTable>
             <p:commandButton value="#{msg['listvids.new']}"
                              ajax="false"
-                             action="#{manageVideo.doAddVideo}" />
-            <p:confirmDialog
-                    message="Wirklich loeschen?"
-                    header="Spiel loeschen"
-                    severity="alert"
-                    widgetVar="confirmation">
-                <p:commandButton value="Ja"
-                                 oncomplete="confirmation.hide()" ajax="false"
-                                 actionListener="#{manageVideo.commitDeleteGame}" />
-                <p:commandButton value="Nein"
-                                 onclick="confirmation.hide()" />
-            </p:confirmDialog>
+                             action="addvideo.xhtml" />
         </h:form>
     </ui:define>
 </ui:composition>

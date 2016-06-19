@@ -1,24 +1,40 @@
 package de.thi.videoflix.domain;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Video implements Serializable {
+
+    @GeneratedValue
+    @Id
+    private long id;
 
     private String name;
     private String studio;
     private String director;
     private int year;
-    private List<Genre> genres = new ArrayList();
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Genre> genres = new ArrayList<>();
     private String description;
     private Boolean is_series;
-    //private byte[] cover;
+    @Lob
+    private byte[] cover;
 
     public Video(){}
 
     public Video(String name){
         this.setName(name);
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -75,5 +91,13 @@ public class Video implements Serializable {
 
     public void setIs_series(Boolean is_series) {
         this.is_series = is_series;
+    }
+
+    public byte[] getCover() {
+        return cover;
+    }
+
+    public void setCover(byte[] cover) {
+        this.cover = cover;
     }
 }

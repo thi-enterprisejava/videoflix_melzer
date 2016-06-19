@@ -1,16 +1,20 @@
 package de.thi.videoflix.web.model;
 
 import de.thi.videoflix.domain.Video;
+import de.thi.videoflix.services.VideoService;
 
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.List;
 
 @Named
-@SessionScoped
+@RequestScoped
 public class Search implements Serializable {
+
+    @Inject
+    VideoService videoService;
 
     private String searchPhrase;
     private List<Video> result;
@@ -33,13 +37,7 @@ public class Search implements Serializable {
 
     public String doSearch() {
         System.out.println("doSearch");
-
-        //Simulate search results
-        result = Arrays.asList(
-                new Video("Game of Chairs"),
-                new Video("Baking Bread")
-        );
-
+        result = videoService.findByName(searchPhrase);
         return "searchResult";
     }
 }

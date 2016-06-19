@@ -4,21 +4,48 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xml:lang="en" lang="en">
+<h:head>
+    <f:metadata>
+        <f:viewParam name="video" value="#{selectedVideo.videoId}"/>
+        <f:viewAction action="#{selectedVideo.init}"/>
+    </f:metadata>
+</h:head>
 <body>
-<ui:composition template="template.xhtml">
+    <ui:composition template="template.xhtml">
     <ui:define name="content">
-        <h1 id="heading">#{selectedVideo.name}</h1>
-        <p>#{msg['details.descr']}: #{selectedVideo.description}</p>
-        <p>#{msg['details.year']}: #{selectedVideo.year}</p>
-        <p>#{msg['details.studio']}: #{selectedVideo.studio}</p>
-        <p>#{msg['details.director']}: #{selectedVideo.director}</p>
+        <h1 id="heading">#{selectedVideo.video.name}</h1>
+        <p>#{msg['details.descr']}: #{selectedVideo.video.description}</p>
+        <p>#{msg['details.year']}: #{selectedVideo.video.year}</p>
+        <p>#{msg['details.studio']}: #{selectedVideo.video.studio}</p>
+        <p>#{msg['details.director']}: #{selectedVideo.video.director}</p>
         <p>#{msg['details.genres']}:</p>
-        <ui:repeat value="#{selectedVideo.genres}" var="genre">
-            <p> #{genre.name} </p>
+        <ui:repeat id="genres" value="#{selectedVideo.video.genres}" var="genre">
+                <p>#{genre.name}</p>
         </ui:repeat>
-        <p>#{msg['details.series']}: #{selectedVideo.is_series ? msg['details.yes'] : msg['details.no']}</p>
-        <a href="listVideos.xhtml">Zurück</a>
+        <p>#{msg['details.series']}: #{selectedVideo.video.is_series ? msg['details.yes'] : msg['details.no']}</p>
+        <h:form>
+            <p:commandButton value="#{msg['listvids.edit']}"
+                             ajax="false"
+                             action="#{editVideo.doSwitchToEditPage(selectedVideo.video)}" />
+            <p:commandButton value="#{msg['listvids.delete']}" onclick="confirmation.show()" />
+            <p:commandButton value="#{msg['details.back']}" ajax="false" action="listVideos.xhtml" />
+            <p:confirmDialog
+                    message="Wirklich loeschen?"
+                    header="Spiel loeschen"
+                    severity="alert"
+                    widgetVar="confirmation">
+                <p:commandButton value="Ja"
+                                 oncomplete="confirmation.hide()"
+                                 ajax="false"
+                                 action="#{selectedVideo.doDeleteVideo}" />
+                <p:commandButton value="Nein"
+                                 onclick="confirmation.hide()" />
+            </p:confirmDialog>
+        </h:form>
     </ui:define>
 </ui:composition>
 </body>

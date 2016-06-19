@@ -11,17 +11,16 @@
     <link rel="stylesheet" href="style/style.css"/>
 </h:head>
 <h:body>
-    <a href="login.xhtml">login</a>
+   <a href="login.xhtml">login</a>
     <a href="register.xhtml">register</a>
 
-    <h:form>
+   <h:form>
         <div id="navigation">
             <ul>
-                <li><a href="index.xhtml">#{msg['navigation.home']}</a></li>
+               <li><a href="index.xhtml">#{msg['navigation.home']}</a></li>
                 <li><a href="listVideos.xhtml">#{msg['navigation.listvids']}</a></li>
                 <li><a href="search.xhtml">#{msg['navigation.search']}</a></li>
-                <li><h:commandLink
-                        action="#{manageVideo.doAddVideo()}">#{msg['navigation.add']}</h:commandLink></li>
+                <li><a href="addvideo.xhtml">#{msg['navigation.add']}</a></li>
             </ul>
         </div>
     </h:form>

@@ -6,15 +6,28 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
       xml:lang="en" lang="en">
 <body>
 <ui:composition template="template.xhtml">
     <ui:define name="content">
         <h1 id="heading">#{msg['searchresult.heading']} "#{search.searchPhrase}"</h1>
-        <ui:repeat value="#{search.result}" var="video">
-            <div>#{video.name}</div>
-        </ui:repeat>
-        <a href="search.xhtml">#{msg['searchresult.back']}</a>
+        <h:form>
+            <p:dataTable value="#{search.result}" var="video">
+                <p:column>
+                    <f:facet name="header">#{msg['listvids.name']}</f:facet>
+                    <h:outputText value="#{video.name}" />
+                </p:column>
+                <p:column>
+                    <h:link outcome="videodetails" value="Details">
+                        <f:param name="video" value="#{video.id}" />
+                    </h:link>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+        <h:form>
+            <p:commandButton value="#{msg['searchresult.back']}" ajax="false" action="search.xhtml" />
+        </h:form>
     </ui:define>
 </ui:composition>
 </body>
