@@ -9,12 +9,12 @@
       xmlns:p="http://primefaces.org/ui"
       xml:lang="en" lang="en">
 <body>
-    <ui:composition template="template.xhtml">
+   <ui:composition template="template.xhtml">
         <ui:define name="content">
             <h1 id="heading">#{msg['add.heading']}</h1>
-            <h:form>
-                <fieldset>
-                    <legend>#{msg['add.legend']}</legend>
+            <fieldset>
+                <legend>#{msg['add.legend']}</legend>
+                    <h:form enctype="multipart/form-data" >
                     <h:panelGrid columns="2">
                         <!-- video name -->
                         <h:panelGroup>
@@ -87,14 +87,23 @@
                              <p:inputTextarea id="descr" value="#{selectedVideo.video.description}"
                                               rows="6" cols="30"/>
                          </h:panelGroup>
+
+                        <!-- cover -->
+                        <h:panelGroup>
+                            <h:outputLabel for="img" value="#{msg['add.pic']}: "/>
+                            <h:inputFile id="img" value="#{selectedVideo.imageData}">
+                                <f:validator binding="#{imageValidator}"/>
+                            </h:inputFile>
+                        </h:panelGroup>
+                        <h:message for="img" style="color: red"/>
                     </h:panelGrid>
-                </fieldset>
                 <div>
                     <p:commandButton value="#{msg['add.save']}" action="#{selectedVideo.doAddVideo}"/>
                     <p:commandButton value="#{msg['add.cancel']}" action="#{editVideo.doCancel}" />
                 </div>
             </h:form>
-        </ui:define>
+            </fieldset>
+      </ui:define>
     </ui:composition>
 </body>
 </html>
