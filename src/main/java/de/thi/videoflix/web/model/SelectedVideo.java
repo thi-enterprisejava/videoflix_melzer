@@ -11,10 +11,13 @@ import javax.enterprise.event.Event;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.Part;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.omnifaces.util.Utils;
 
 @ViewScoped
 @Named
@@ -33,6 +36,7 @@ public class SelectedVideo implements Serializable{
     private Long videoId;
     private List<Genre> genres;
     private List<String> genreIds;
+    private Part imageData;
 
     @PostConstruct
     public void postConstruct() {
@@ -72,6 +76,14 @@ public class SelectedVideo implements Serializable{
         this.genreIds = genreIds;
     }
 
+    public Part getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(Part imageData) {
+        this.imageData = imageData;
+    }
+
     public void init() {
         System.out.println("SelectedVideo init()");
 
@@ -89,17 +101,18 @@ public class SelectedVideo implements Serializable{
     }
 
 
-   public String doAddVideo() {
+   public String doAddVideo() throws IOException{
        System.out.println("Add new video" + video);
+       updateImage();
        updateGenreForVideo();
        videoService.addVideo(video);
-       //videoChangeEvent.fire(video);
        //return "videodetails.xhtml?faces-redirect=true&video="+video.getId();
        return "listVideos.xhtml";
     }
 
-    public String doEditVideo(){
+    public String doEditVideo() throws IOException{
         System.out.println("Edit video " +video);
+        updateImage();
         updateGenreForVideo();
         videoService.updateVideo(video);
         //return "videodetails.xhtml?faces-redirect=true&video="+video.getId();
@@ -108,12 +121,6 @@ public class SelectedVideo implements Serializable{
 
     public String doDeleteVideo() {
         System.out.println("Delete Video");
-        videoService.deleteVideo(video);
-        return "listVideos.xhtml?faces-redirect=true";
-    }
-
-    public String doDeleteVideo2(Video video) {
-        this.video = video;
         videoService.deleteVideo(video);
         return "listVideos.xhtml?faces-redirect=true";
     }
@@ -139,6 +146,12 @@ public class SelectedVideo implements Serializable{
         }
     }
 
+    private void updateImage()throws IOException {
+        if (imageData != null) {
+            video.setCover(Utils.toByteArray(imageData.getInputStream()));
+        }
+    }
+
     public List<Genre> getListGenres() {
         if (genres == null) {
             genres = genreService.getAllGenres();
@@ -146,5 +159,4 @@ public class SelectedVideo implements Serializable{
         }
         return genres;
     }
-
 }
