@@ -27,10 +27,4 @@ public class GenreServiceBean implements GenreService {
         entityManager.persist(genre);
     }
 
-    /*@Override
-    public List<Genre> getGenreListForVideo(Long videoId){
-        Video managedVideo = entityManager.find(Video.class, videoId);
-        List<Genre> genres = managedVideo.getGenres();
-        return genres;
-    }*/
 }

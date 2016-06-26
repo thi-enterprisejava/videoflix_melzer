@@ -11,7 +11,7 @@ import java.io.File;
 public abstract class AbstractITCase {
     @Deployment(testable = false)
     public static WebArchive createDeployment(){
-        WebArchive archive = ShrinkWrap.create(ZipImporter.class, "test.war").importFrom(new
+       WebArchive archive = ShrinkWrap.create(ZipImporter.class, "test.war").importFrom(new
                 File(("target/videoflix.war"))).as(WebArchive.class);
         archive.delete("/WEB-INF/classes/META-INF/persistence.xml");
         archive.delete("/WEB-INF/videoflix-ds.xml");
