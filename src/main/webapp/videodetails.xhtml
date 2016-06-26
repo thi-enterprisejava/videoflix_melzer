@@ -22,7 +22,10 @@
         <o:graphicImage rendered="#{not empty selectedVideo.video.cover}"
                         id="img"
                         value="#{loadImage.getImageForId(selectedVideo.videoId)}"
-                        lastModified="#{now}"/>
+                        lastModified="#{now}" />
+        <h:form>
+            <h:commandButton value="#{msg['details.delpic']}" action="#{selectedVideo.doDeleteImage}" rendered="#{not empty selectedVideo.video.cover}" />
+        </h:form>
         <p>#{msg['details.descr']}: #{selectedVideo.video.description}</p>
         <p>#{msg['details.year']}: #{selectedVideo.video.year}</p>
         <p>#{msg['details.studio']}: #{selectedVideo.video.studio}</p>
