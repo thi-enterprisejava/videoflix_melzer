@@ -125,6 +125,13 @@ public class SelectedVideo implements Serializable{
         return "listVideos.xhtml?faces-redirect=true";
     }
 
+    public String doDeleteImage() {
+        System.out.println("Delete Image for Video: " +video);
+        video.setCover(null);
+        videoService.updateVideo(video);
+        return "videodetails.xhtml?faces-redirect=true&video="+video.getId();
+    }
+
     public String doShowDetails(Video video) {
         System.out.println("Show details for a video: " +video);
         this.video = video;
