@@ -22,10 +22,10 @@
         <h:form enctype="multipart/form-data">
             <fieldset>
                 <legend>#{msg['add.legend']}</legend>
-                    <h:panelGrid columns="2">
-                        <!-- video name -->
+                    <h:panelGrid columns="3">
+
+                        <h:outputLabel for="vname" value="#{msg['add.vname']}: " />
                         <h:panelGroup>
-                            <h:outputLabel for="vname" value="#{msg['add.vname']}: " />
                             <p:inputText id="vname"
                                         value="#{selectedVideo.video.name}"
                                         validatorMessage="Der Name muss zwischen 1 und 50 Zeichen lang sein!">
@@ -35,9 +35,10 @@
                         </h:panelGroup>
                         <p:message for="vname" style="color: red" />
 
-                        <!-- studio -->
+
+
+                        <h:outputLabel for="studio" value="#{msg['add.studio']}: " />
                         <h:panelGroup>
-                            <h:outputLabel for="studio" value="#{msg['add.studio']}: " />
                             <p:inputText id="studio"
                                          value="#{selectedVideo.video.studio}"
                                          validatorMessage="Der Name des Studios muss zwischen 1 und 50 Zeichen lang sein!">
@@ -47,9 +48,10 @@
                         </h:panelGroup>
                         <p:message for="studio" style="color: red" />
 
-                        <!-- director -->
+
+
+                        <h:outputLabel for="director" value="#{msg['add.director']}: " />
                         <h:panelGroup>
-                            <h:outputLabel for="director" value="#{msg['add.director']}: " />
                             <p:inputText id="director"
                                          value="#{selectedVideo.video.director}"
                                          validatorMessage="Der Name des Regisseurs muss zwischen 1 und 50 Zeichen lang sein!">
@@ -59,9 +61,10 @@
                         </h:panelGroup>
                         <p:message for="director" style="color: red" />
 
-                        <!-- year -->
+
+
+                        <h:outputLabel for="year" value="#{msg['add.year']}: " />
                         <h:panelGroup>
-                            <h:outputLabel for="year" value="#{msg['add.year']}: " />
                             <p:inputText id="year"
                                          value="#{selectedVideo.video.year}"
                                          maxlength="4"
@@ -73,32 +76,30 @@
                         </h:panelGroup>
                         <p:message for="year" style="color: red" />
 
-                        <!-- is_series -->
-                        <h:panelGroup>
-                            <h:outputLabel for="isseries" value="#{msg['add.isseries']}: " />
-                            <p:selectBooleanCheckbox id="isseries" value="#{selectedVideo.video.is_series}" />
-                        </h:panelGroup>
 
-                        <!-- genre -->
+
+                        <h:outputLabel for="isseries" value="#{msg['add.isseries']}: " />
+                        <p:selectBooleanCheckbox id="isseries" value="#{selectedVideo.video.is_series}" />
+
+                    </h:panelGrid>
+                    <h:panelGrid>
+
+                        <h:outputLabel for="genre" value="#{msg['add.genre']}: " />
                         <h:panelGroup>
-                            <h:outputLabel for="genre" value="#{msg['add.genre']}: " />
                             <h:selectManyListbox id="genre" value="#{selectedVideo.genreIds}">
                                 <f:selectItems value="#{selectedVideo.listGenres}" var="genre"
                                                itemLabel="#{genre.name}" itemValue="#{genre.id}"/>
                             </h:selectManyListbox>
                         </h:panelGroup>
 
-                        <!-- description -->
-                        <h:panelGroup>
-                            <h:outputLabel for="descr" value="#{msg['add.descr']}: " />
-                            <p:inputTextarea id="descr" value="#{selectedVideo.video.description}"
+
+                        <h:outputLabel for="descr" value="#{msg['add.descr']}: " />
+                        <p:inputTextarea id="descr" value="#{selectedVideo.video.description}"
                                              rows="6" cols="30"/>
-                        </h:panelGroup>
 
-                        <!-- cover -->
 
-                       <!-- <h:panelGroup>
-                            <h:outputLabel for="img" value="#{msg['add.pic']}: "/>
+                        <h:outputLabel for="img" value="#{msg['add.pic']}: "/>
+                        <h:panelGroup>
                             <h:inputFile id="img" value="#{selectedVideo.imageData}">
                                 <f:validator binding="#{imageValidator}"/>
                             </h:inputFile>
@@ -106,7 +107,7 @@
                                         value="#{loadImage.getImageForId(selectedVideo.videoId)}"
                                         lastModified="#{now}"/>
                         </h:panelGroup>
-                        <h:message for="img" style="color: red"/> -->
+                        <h:message for="img" style="color: red"/>
                     </h:panelGrid>
                 </fieldset>
                 <div>

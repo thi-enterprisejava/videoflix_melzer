@@ -4,10 +4,8 @@ import de.thi.videoflix.domain.Genre;
 import de.thi.videoflix.domain.Video;
 import de.thi.videoflix.services.GenreService;
 import de.thi.videoflix.services.VideoService;
-import de.thi.videoflix.util.Events;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.event.Event;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -28,9 +26,6 @@ public class SelectedVideo implements Serializable{
 
     @Inject
     GenreService genreService;
-
-    @Inject @Events.Changed
-    private Event<Video> videoChangeEvent;
 
     private Video video;
     private Long videoId;
