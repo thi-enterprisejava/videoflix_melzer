@@ -21,7 +21,7 @@
                         </h:panelGroup>
                         <h:panelGroup>
                             <label for="password">#{msg['register.pwd']}</label>
-                            <h:inputText type="password" id="password" value="#{registerUser.user.password}"/>
+                            <h:inputSecret id="password" value="#{registerUser.user.password}"/>
                         </h:panelGroup>
                         <h:panelGroup>
                             <h:commandButton value="#{msg['register.button']}" action="#{registerUser.doAddUser}" />

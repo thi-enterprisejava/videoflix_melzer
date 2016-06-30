@@ -13,10 +13,10 @@
 <h:body>
     <a href="login.xhtml">login</a>
     <a href="register.xhtml">register</a>
-   <h:form >
+   <h:form rendered="#{request.remoteUser != null}">
+       <h:outputText value="#{msg['navigation.user']} #{request.remoteUser}"/>
        <h:commandLink value="logout" action="#{registerUser.doLogout}" />
    </h:form>
-
 
     <div id="navigation">
         <ul>

@@ -11,25 +11,24 @@
 <ui:composition template="template.xhtml">
     <ui:define name="content">
         <h1 id="heading">#{msg['login.heading']}</h1>
-        <h:form>
+        <form method="post" action="j_security_check" >
             <fieldset>
                 <legend>Login</legend>
                 <h:panelGrid columns="3">
                     <h:panelGroup>
-                        <label for="username">#{msg['login.username']}: </label>
-                        <input type="text" name="username" />
+                        <label for="j_username" >#{msg['login.username']}: </label>
+                        <input type="text" id="j_username" name="j_username" />
                     </h:panelGroup>
                     <h:panelGroup>
-                        <label for="password">#{msg['login.pwd']}: </label>
-                        <input type="password" name="password"/>
+                        <label for="j_password">#{msg['login.pwd']}: </label>
+                        <input type="password" id="j_password" name="j_password"/>
                     </h:panelGroup>
                     <h:panelGroup>
-                        <input type="submit" value="Login"/>
+                        <input type="submit" value="#{msg['login.heading']}"/>
                     </h:panelGroup>
                 </h:panelGrid>
             </fieldset>
-            <h:commandLink action="index" value="Zurück"/>
-        </h:form>
+        </form>
     </ui:define>
 </ui:composition>
 </body>
