@@ -13,8 +13,12 @@ import java.util.List;
 @RequestScoped
 public class Search implements Serializable {
 
+    private VideoService videoService;
+
     @Inject
-    VideoService videoService;
+    public Search(VideoService videoService) {
+        this.videoService = videoService;
+    }
 
     private String searchPhrase;
     private List<Video> result;
