@@ -4,10 +4,8 @@ import de.thi.videoflix.domain.Genre;
 import de.thi.videoflix.domain.Video;
 import de.thi.videoflix.services.GenreService;
 import de.thi.videoflix.services.VideoService;
-import de.thi.videoflix.util.Events;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.event.Event;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -28,9 +26,6 @@ public class SelectedVideo implements Serializable{
 
     @Inject
     GenreService genreService;
-
-    @Inject @Events.Changed
-    private Event<Video> videoChangeEvent;
 
     private Video video;
     private Long videoId;
@@ -84,6 +79,17 @@ public class SelectedVideo implements Serializable{
         this.imageData = imageData;
     }
 
+    /**
+     * Setter for services for testing purposes
+     */
+    public void setVideoService(VideoService mockedVideoService){
+        videoService = mockedVideoService;
+    }
+
+    public void setGenreService(GenreService mockedGenreService){
+        genreService = mockedGenreService;
+    }
+
     public void init() {
         System.out.println("SelectedVideo init()");
 
@@ -91,18 +97,25 @@ public class SelectedVideo implements Serializable{
         if(foundVideo != null) {
             System.out.println("Found video: " + foundVideo);
             video = foundVideo;
+
+            this.genreIds = video.getGenres().stream()
+                    .map(genre -> genre.getId().toString())
+                    .collect(Collectors.toList());
         } else {
             System.out.println("No video found for id " + videoId);
         }
-
-        this.genreIds = video.getGenres().stream()
-                .map(genre -> genre.getId().toString())
-                .collect(Collectors.toList());
+        /*try {
+            this.genreIds = video.getGenres().stream()
+                    .map(genre -> genre.getId().toString())
+                    .collect(Collectors.toList());
+        }catch(Exception e){
+            System.out.println("Video has no genres");
+        }*/
     }
 
 
    public String doAddVideo() throws IOException{
-       System.out.println("Add new video" + video);
+       System.out.println("Add new video " + video);
        updateImage();
        updateGenreForVideo();
        videoService.addVideo(video);
@@ -140,16 +153,20 @@ public class SelectedVideo implements Serializable{
 
     private void updateGenreForVideo() {
         System.out.println("Setting Genres...");
-        List<Genre> genreList = new ArrayList<>(genreIds.size());
-        for (String genId : genreIds) {
-            long id = Long.parseLong(genId);
-            for (Genre g : this.getListGenres()) {
-                if (id == g.getId()) {
-                    genreList.add(g);
-                    break;
+        try {
+            List<Genre> genreList = new ArrayList<>(genreIds.size());
+            for (String genId : genreIds) {
+                long id = Long.parseLong(genId);
+                for (Genre g : this.getListGenres()) {
+                    if (id == g.getId()) {
+                        genreList.add(g);
+                        break;
+                    }
                 }
+                video.setGenres(genreList);
             }
-            video.setGenres(genreList);
+        }catch(Exception e){
+            System.out.println("Could not get genres");
         }
     }
 
