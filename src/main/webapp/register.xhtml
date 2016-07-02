@@ -9,7 +9,7 @@
 <body>
 <ui:composition template="template.xhtml">
     <ui:define name="content">
-        <h1 id="heading">#{msg['login.heading']}</h1>
+        <h1 id="heading">#{msg['register.heading']}</h1>
         <h:form>
             <fieldset>
                 <legend>Register</legend>
@@ -21,7 +21,7 @@
                         </h:panelGroup>
                         <h:panelGroup>
                             <label for="password">#{msg['register.pwd']}</label>
-                            <h:inputText type="password" id="password" value="#{registerUser.user.password}"/>
+                            <h:inputSecret id="password" value="#{registerUser.user.password}"/>
                         </h:panelGroup>
                         <h:panelGroup>
                             <h:commandButton value="#{msg['register.button']}" action="#{registerUser.doAddUser}" />

@@ -2,11 +2,9 @@ package de.thi.videoflix.web.model;
 
 import de.thi.videoflix.domain.Video;
 import de.thi.videoflix.services.VideoService;
-import de.thi.videoflix.util.Events;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.event.Observes;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;

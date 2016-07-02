@@ -43,6 +43,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.jboss.arquillian.extension</groupId>
+            <artifactId>arquillian-persistence-impl</artifactId>
+            <version>1.0.0.Alpha6</version>
+        </dependency>
+        <dependency>
             <groupId>org.wildfly</groupId>
             <artifactId>wildfly-arquillian-container-remote</artifactId>
             <version>8.2.1.Final</version>
