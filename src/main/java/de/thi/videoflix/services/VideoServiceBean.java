@@ -2,7 +2,6 @@ package de.thi.videoflix.services;
 
 import de.thi.videoflix.domain.Video;
 
-import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;

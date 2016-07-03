@@ -12,7 +12,6 @@
 <ui:composition template="template.xhtml">
     <ui:define name="content">
         <h1 id="heading">#{msg['listvids.heading']}</h1>
-        <!-- Liste aller Videos eines Users anzeigen -->
         <h:form>
             <p:dataTable value="#{videos}" var="video">
                 <p:column>
@@ -44,7 +43,7 @@
             </p:dataTable>
             <p:commandButton value="#{msg['listvids.new']}"
                              ajax="false"
-                             action="addvideo.xhtml" />
+                             action="addvideo?faces-redirect=true" />
         </h:form>
     </ui:define>
 </ui:composition>

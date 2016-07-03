@@ -1,13 +1,11 @@
 package de.thi.videoflix.services;
 
 import de.thi.videoflix.domain.Genre;
-import de.thi.videoflix.domain.Video;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import java.io.Serializable;
 import java.util.List;
 
 @Stateless

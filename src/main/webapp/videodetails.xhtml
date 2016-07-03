@@ -23,7 +23,7 @@
                         id="img"
                         value="#{loadImage.getImageForId(selectedVideo.videoId)}"
                         lastModified="#{now}" />
-        <h:form>
+        <h:form rendered="#{request.remoteUser != null}" >
             <h:commandButton value="#{msg['details.delpic']}" action="#{selectedVideo.doDeleteImage}" rendered="#{not empty selectedVideo.video.cover}" />
         </h:form>
         <p>#{msg['details.descr']}: #{selectedVideo.video.description}</p>
@@ -39,7 +39,7 @@
             <p:commandButton value="#{msg['listvids.edit']}"
                              ajax="false"
                              action="#{editVideo.doSwitchToEditPage(selectedVideo.video)}" />
-            <p:commandButton value="#{msg['listvids.delete']}" onclick="confirmation.show()" />
+            <p:commandButton value="#{msg['listvids.delete']}" onclick="confirmation.show()" rendered="#{request.remoteUser != null}" />
             <p:commandButton value="#{msg['details.back']}" ajax="false" action="listVideos.xhtml" />
             <p:confirmDialog
                     message="Wirklich loeschen?"

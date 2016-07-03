@@ -1,6 +1,5 @@
 package de.thi.videoflix.web.model;
 
-
 import de.thi.videoflix.domain.User;
 import de.thi.videoflix.services.UserService;
 
@@ -10,7 +9,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.IOException;
 import java.io.Serializable;
 import java.security.NoSuchAlgorithmException;
 
@@ -42,7 +40,6 @@ public class RegisterUser implements Serializable {
         externalContext.getResponseOutputWriter().write("<html><head><meta http-equiv='refresh' content='0;index.xhtml'></head></html>");
         facesContext.responseComplete();
     }
-
 
     public User getUser() {
         return user;

@@ -104,13 +104,6 @@ public class SelectedVideo implements Serializable{
         } else {
             System.out.println("No video found for id " + videoId);
         }
-        /*try {
-            this.genreIds = video.getGenres().stream()
-                    .map(genre -> genre.getId().toString())
-                    .collect(Collectors.toList());
-        }catch(Exception e){
-            System.out.println("Video has no genres");
-        }*/
     }
 
 

@@ -13,6 +13,7 @@ public class Genre implements Serializable {
     private String name;
 
     public Genre(){}
+
     public Genre(String name){
         this.setName(name);
     }
@@ -33,7 +34,6 @@ public class Genre implements Serializable {
         this.name = name;
     }
 
-
     /*
     Abenteuer
     Action
@@ -50,7 +50,4 @@ public class Genre implements Serializable {
     Thriller
     Western
      */
-
-
-
 }
