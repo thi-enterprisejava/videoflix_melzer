@@ -14,7 +14,6 @@ public class LoadImage {
     @Inject
     VideoService videoService;
 
-
     /**
      * Setter for service for testing purposes
      */
