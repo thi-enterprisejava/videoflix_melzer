@@ -114,7 +114,7 @@ public class SelectedVideoTest {
         selectedVideo.setVideo(video);
         selectedVideo.setImageData(picture);
         selectedVideo.setGenreIds(Arrays.asList("1"));
-        
+
         selectedVideo.doAddVideo();
         ArgumentCaptor<Video> argumentCaptor = ArgumentCaptor.forClass(Video.class);
         verify(mockedVideoService).addVideo(argumentCaptor.capture());

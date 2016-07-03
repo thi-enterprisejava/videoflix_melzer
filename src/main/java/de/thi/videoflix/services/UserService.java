@@ -39,7 +39,6 @@ public class UserService implements Serializable{
         user.setPassword(encryptPassword(user.getPassword()));
         entityManager.persist(user);
         return user;
-
     }
 
     public void deleteUser(User user){
@@ -47,7 +46,7 @@ public class UserService implements Serializable{
         entityManager.remove(managedUser);
     }
 
-    private String encryptPassword(String password) throws NoSuchAlgorithmException {
+    public String encryptPassword(String password) throws NoSuchAlgorithmException {
             return Base64.getEncoder().encodeToString(
                     MessageDigest.getInstance("SHA-256").digest(password.getBytes()));
     }

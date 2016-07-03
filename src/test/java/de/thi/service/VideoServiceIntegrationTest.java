@@ -12,19 +12,16 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.persistence.Cleanup;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.formatter.Formatters;
-import org.jboss.shrinkwrap.api.importer.ZipImporter;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import javax.ejb.EJB;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @RunWith(Arquillian.class)
@@ -104,7 +101,7 @@ public class VideoServiceIntegrationTest {
 
         String title1 = "Back to the Future 2";
         String title2 = "Back to the Future 3";
-        Video v1 = new Video();
+        Video v1 = new Video(title1);
         videoService.addVideo(v1);
 
         Video addedVideo = videoService.findById(v1.getId());
@@ -116,4 +113,23 @@ public class VideoServiceIntegrationTest {
         assertNotNull(updatedVideo);
         assertEquals(title2, updatedVideo.getName());
     }
+
+    @Test
+    @Cleanup
+    public void thatVideoCanBeDeleted() throws Exception {
+        String title = "Vier Fäuste gegen Rio";
+        Video v1 = new Video(title);
+        videoService.addVideo(v1);
+
+        Video addedVideo = videoService.findById(v1.getId());
+
+        assertNotNull(addedVideo);
+
+        videoService.deleteVideo(addedVideo);
+
+        Video deletedVideo = videoService.findById(v1.getId());
+        assertNull(deletedVideo);
+    }
+
+
 }
