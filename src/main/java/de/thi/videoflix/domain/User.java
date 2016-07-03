@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 @Entity
 public class User implements Serializable{
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
@@ -22,10 +23,6 @@ public class User implements Serializable{
 
     public Long getUserId() {
         return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
     }
 
     public String getUsername() {

@@ -10,8 +10,16 @@ import javax.inject.Named;
 @Named
 @ApplicationScoped
 public class LoadImage {
+
     @Inject
     VideoService videoService;
+
+    /**
+     * Setter for service for testing purposes
+     */
+    public void setVideoService(VideoService mockedVideoService){
+        this.videoService = mockedVideoService;
+    }
 
     public byte[] getImageForId(Long id) {
         if (id == null) {
