@@ -112,8 +112,7 @@ public class SelectedVideo implements Serializable{
        updateImage();
        updateGenreForVideo();
        videoService.addVideo(video);
-       //return "videodetails.xhtml?faces-redirect=true&video="+video.getId();
-       return "listVideos.xhtml";
+       return "videodetails.xhtml?faces-redirect=true&video="+video.getId();
     }
 
     public String doEditVideo() throws IOException{
@@ -121,8 +120,7 @@ public class SelectedVideo implements Serializable{
         updateImage();
         updateGenreForVideo();
         videoService.updateVideo(video);
-        //return "videodetails.xhtml?faces-redirect=true&video="+video.getId();
-        return "listVideos.xhtml";
+        return "videodetails.xhtml?faces-redirect=true&video="+video.getId();
     }
 
     public String doDeleteVideo() {
