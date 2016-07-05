@@ -1,4 +1,4 @@
-package de.thi.videoflix.web.model;
+﻿package de.thi.videoflix.web.model;
 
 import de.thi.videoflix.domain.Genre;
 import de.thi.videoflix.services.GenreService;
@@ -31,7 +31,7 @@ public class InitGenres {
         genreService.addGenre(new Genre("Drama"));
         genreService.addGenre(new Genre("Fantasy"));
         genreService.addGenre(new Genre("Biografie"));
-        genreService.addGenre(new Genre("Kom�die"));
+        genreService.addGenre(new Genre("Komödie"));
         genreService.addGenre(new Genre("Horror"));
         genreService.addGenre(new Genre("Krimi"));
         genreService.addGenre(new Genre("Krieg"));

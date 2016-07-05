@@ -1,4 +1,4 @@
-package de.thi.videoflix.services;
+ï»¿package de.thi.videoflix.services;
 
 
 import de.thi.videoflix.domain.Genre;
@@ -28,7 +28,7 @@ public class MockVideoServiceBean {
         genres.add(genre2);
         vid1.setGenres(genres);
         vid1.setDescription("Eine harmlose Partie \"Reise nach Jerusalem\" artet in ein wirres Netz aus Intrigen, Gewalt, " +
-                "und Königsmorden aus. Außerdem gibt es Eiszombies und coole Drachen.");
+                "und KÃ¶nigsmorden aus. AuÃŸerdem gibt es Eiszombies und coole Drachen.");
         vid1.setIs_series(true);
 
         Video vid2 = new Video();
@@ -39,9 +39,9 @@ public class MockVideoServiceBean {
         List<Genre> genres2 = new ArrayList<>();
         genres2.add(genre1);
         vid2.setGenres(genres2);
-        vid2.setDescription("Der verzweifelte, an Krebs erkrankte Grundschullehrer Walter Weiss muss für seine medizinischen" +
-                "Behandlungen Geld auftreiben. Mit einem seiner ehemaligen Schüler, dem 10-jährigen Johannes Pinkmann " +
-                "eröffnet er einen illegalen Bäckereibetrieb. Doch Walters Schwager Hans, der beim Gesundheitsamt tätig ist, könnte" +
+        vid2.setDescription("Der verzweifelte, an Krebs erkrankte Grundschullehrer Walter Weiss muss fÃ¼r seine medizinischen" +
+                "Behandlungen Geld auftreiben. Mit einem seiner ehemaligen SchÃ¼ler, dem 10-jÃ¤hrigen Johannes Pinkmann " +
+                "erÃ¶ffnet er einen illegalen BÃ¤ckereibetrieb. Doch Walters Schwager Hans, der beim Gesundheitsamt tÃ¤tig ist, kÃ¶nnte" +
                 "ihnen auf die Schliche kommen.");
         vid2.setIs_series(true);
 
@@ -58,8 +58,8 @@ public class MockVideoServiceBean {
         genres3.add(genre3);
         genres3.add(genre4);
         vid3.setGenres(genres3);
-        vid3.setDescription("Die 86-jährige lebenslustige, etwas demente Rentnerin Jessica Day zieht in eine WG in der New Yorker Innenstadt." +
-                "Durch ihre charmante vergessliche Art zerstört sie nach und nach das Leben ihrer Mitbewohner.");
+        vid3.setDescription("Die 86-jÃ¤hrige lebenslustige, etwas demente Rentnerin Jessica Day zieht in eine WG in der New Yorker Innenstadt." +
+                "Durch ihre charmante vergessliche Art zerstÃ¶rt sie nach und nach das Leben ihrer Mitbewohner.");
         vid3.setIs_series(true);
 
         List<Video> ret = new ArrayList<>();

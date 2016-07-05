@@ -1,4 +1,4 @@
-package de.thi.videoflix.domain;
+﻿package de.thi.videoflix.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -40,7 +40,7 @@ public class Genre implements Serializable {
     Drama
     Fantasy
     Biografie
-    Kom�die
+    Komödie
     Horror
     Krimi
     Krieg
